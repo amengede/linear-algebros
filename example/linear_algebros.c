@@ -97,6 +97,18 @@ float angleBetweenVectors3(vec3 a, vec3 b) {
 	return linalgRad2Deg(acosf(dot / denominator));
 }
 
+vec3 project(vec3 incoming, vec3 basis) {
+	
+	float scale = linalgDotVec3(incoming, basis) / linalgDotVec3(basis, basis);
+
+	return linalgMulVec3(basis, scale);
+}
+
+vec3 reject(vec3 incoming, vec3 basis) {
+	
+	return linalgSubVec3(incoming, project(incoming, basis));
+}
+
 /*-------- Matrix4 Operations ----------*/
 
 mat4 linalgMakeIdentity4() {

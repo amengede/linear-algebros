@@ -113,6 +113,32 @@ vec3 linalgMulVec3(vec3 a, float scalar);
 */
 float angleBetweenVectors3(vec3 a, vec3 b);
 
+/**
+	Get the projection of one vector onto another.
+	Any vector v can be decomposed with regard to another vector u:
+
+		v	= v(parallel with u) + v(perpendicular with u)
+			= projection(v onto u) + rejection(v onto u)
+
+	\param incoming the vector to be projected
+	\param basis the vector onto which to be projected
+	\returns a new vector, parallel with basis, storing the vector projection of incoming onto basis
+*/
+vec3 project(vec3 incoming, vec3 basis);
+
+/**
+	Get the rejection of one vector onto another.
+	Any vector v can be decomposed with regard to another vector u:
+
+		v	= v(parallel with u) + v(perpendicular with u)
+			= projection(v onto u) + rejection(v onto u)
+
+	\param incoming the vector to be rejected
+	\param basis the vector to do the rejecting
+	\returns a new vector, orthogonal to basis, storing the vector rejection of incoming from basis
+*/
+vec3 reject(vec3 incoming, vec3 basis);
+
 /*-------- Matrix4 Operations ----------*/
 
 /**
