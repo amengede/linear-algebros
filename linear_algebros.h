@@ -28,6 +28,7 @@ typedef struct mat4 {
 /*-------- Conversions        ----------*/
 
 #define pi 3.14159265359f
+#define eps 1e-30f
 
 /**
 	Convert from degrees to radians.
@@ -36,6 +37,14 @@ typedef struct mat4 {
 	\returns the angle converted to radians
 */
 float linalgDeg2Rad(float angle);
+
+/**
+	Convert from radians to degrees.
+
+	\param angle the angle to convert (in radians)
+	\returns the angle converted to degrees
+*/
+float linalgRad2Deg(float angle);
 
 /*-------- Vec3 Operations    ----------*/
 
@@ -94,6 +103,15 @@ vec3 linalgAddVec3(vec3 a, vec3 b);
 	\returns a new vector storing the scaled vector: c = scalar * a
 */
 vec3 linalgMulVec3(vec3 a, float scalar);
+
+/**
+	Get the angle between two vectors.
+
+	\param a the first vector
+	\param b the second vector
+	\returns the angle between the vectors a & b, in degrees
+*/
+float angleBetweenVectors3(vec3 a, vec3 b);
 
 /*-------- Matrix4 Operations ----------*/
 

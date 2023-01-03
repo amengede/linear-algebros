@@ -7,6 +7,10 @@ float linalgDeg2Rad(float angle) {
 	return angle * pi / 180.0f;
 }
 
+float linalgRad2Deg(float angle) {
+	return angle * 180.0f / pi;
+}
+
 /*-------- Vec3 Operations    ----------*/
 
 vec3 linalgMakeVec3(float x, float y, float z) {
@@ -75,6 +79,22 @@ vec3 linalgMulVec3(vec3 a, float scalar) {
 	result.vector = _mm_mul_ps(a.vector, _mm_set1_ps(scalar));
 
 	return result;
+}
+
+float angleBetweenVectors3(vec3 a, vec3 b) {
+
+	float magA = linalgDotVec3(a, a);
+	float magB = linalgDotVec3(b, b);
+	float denominator = magA * magB;
+
+	if (denominator < eps) {
+		return 0.0f;
+	}
+
+	float dot = linalgDotVec3(a, b);
+	denominator = sqrtf(denominator);
+
+	return linalgRad2Deg(acosf(dot / denominator));
 }
 
 /*-------- Matrix4 Operations ----------*/
